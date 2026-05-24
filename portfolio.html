@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abishek Pandiarajan – Lead Software Engineer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary:   #3b6cf7;
+      --secondary: #7c3aed;
+      --accent:    #06b6d4;
+      --soft-bg:   #f5f7ff;
+      --card-bg:   #ffffff;
+      --text:      #1e2438;
+      --muted:     #64748b;
+      --border:    #e2e8f0;
+      --grad-hero: linear-gradient(135deg, #eef2ff 0%, #f0fdf9 50%, #faf5ff 100%);
+      --grad-pill: linear-gradient(90deg, #3b6cf720, #7c3aed20);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display-font { font-family: 'Inter', sans-serif; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar-brand {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-link {
+      font-weight: 500;
+      font-size: .88rem;
+      color: var(--muted) !important;
+      letter-spacing: .02em;
+      padding: .4rem .85rem !important;
+      border-radius: 50px;
+      transition: all .2s;
+    }
+    .nav-link:hover { color: var(--primary) !important; background: #3b6cf710; }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--grad-hero);
+      padding: 90px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      box-shadow: 0 8px 32px #3b6cf730;
+      flex-shrink: 0;
+    }
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(100deg, var(--text) 30%, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-top: .4rem;
+    }
+    .hero-contact a {
+      color: var(--muted);
+      font-size: .85rem;
+      text-decoration: none;
+      display: flex; align-items: center; gap: .35rem;
+      transition: color .2s;
+    }
+    .hero-contact a:hover { color: var(--primary); }
+    .exp-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: linear-gradient(90deg, #3b6cf712, #7c3aed12);
+      border: 1px solid #3b6cf725;
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 70px 0; }
+    section:nth-child(odd) { background: var(--soft-bg); }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: .4rem;
+    }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .summary-text {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #374151;
+    }
+
+    /* ── SKILLS ── */
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem 1.6rem;
+      height: 100%;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .skill-category:hover {
+      box-shadow: 0 8px 28px #3b6cf715;
+      transform: translateY(-3px);
+    }
+    .skill-cat-title {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .skill-pill {
+      display: inline-block;
+      background: var(--grad-pill);
+      border: 1px solid #3b6cf720;
+      border-radius: 50px;
+      padding: .22rem .8rem;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: .2rem .2rem .2rem 0;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px; top: 6px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.4rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 0 3px #fff, 0 0 0 5px #3b6cf730;
+    }
+    .timeline-company {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: .15rem 0 .1rem;
+    }
+    .timeline-period {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+    .timeline-bullets { list-style: none; padding: 0; }
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: .88rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: .3rem;
+    }
+    .timeline-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .6em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    /* ── PROJECT CARDS ── */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.6rem;
+      height: 100%;
+      display: flex; flex-direction: column;
+      transition: box-shadow .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+    .project-card:hover {
+      box-shadow: 0 12px 36px #3b6cf720;
+      transform: translateY(-5px);
+    }
+    .project-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #eef2ff, #f0fdf9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--primary);
+      margin-bottom: 1rem; border: 1px solid #3b6cf715;
+    }
+    .project-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+    .project-company { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .7rem; }
+    .project-desc { font-size: .86rem; color: #64748b; line-height: 1.65; flex: 1; }
+    .project-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .3rem; }
+    .project-tag { display: inline-block; background: #f1f5f9; border-radius: 50px; padding: .18rem .7rem; font-size: .72rem; font-weight: 600; color: var(--muted); }
+
+    .category-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 2.5rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .category-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── EDUCATION / CERTS ── */
+    .edu-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1rem; transition: box-shadow .2s;
+    }
+    .edu-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, #eef2ff, #faf5ff);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; color: var(--secondary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(135deg, #1e2438, #2d3660);
+      color: #94a3b8; text-align: center; padding: 2rem 1rem; font-size: .85rem;
+    }
+    footer a { color: #7c9df4; text-decoration: none; }
+    .divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 3px; margin-bottom: 1.6rem; }
+    /* ── NDA BANNER ── */
+    .nda-banner {
+      background: linear-gradient(135deg, #fefce8, #fffbeb);
+      border-top: 3px solid #f59e0b;
+      border-bottom: 1px solid #fde68a;
+      padding: 1.2rem 0;
+      font-size: .88rem;
+      color: #78350f;
+      line-height: 1.6;
+    }
+    .nda-icon {
+      font-size: 1.6rem;
+      color: #f59e0b;
+      flex-shrink: 0;
+    }
+    @media (max-width: 576px) { #hero { padding: 60px 0 50px; } .section-title { font-size: 1.4rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">AP</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#summary">Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4" data-aos="fade-up">
+      <div class="hero-avatar">AP</div>
+      <div>
+        <div class="hero-name">Abishek Pandiarajan</div>
+        <div class="hero-title">Lead Software Engineer &nbsp;·&nbsp; Hardware Integration &nbsp;·&nbsp; Full Stack &nbsp;·&nbsp; AI Solutions</div>
+        <div class="hero-contact d-flex flex-wrap gap-3 mt-3">
+          <a href="mailto:abishek.pandiarajan@gmail.com"><i class="bi bi-envelope-fill"></i> abishek.pandiarajan@gmail.com</a>
+          <a href="https://linkedin.com/in/abishek-pandiarajan" target="_blank"><i class="bi bi-linkedin"></i> linkedin.com/in/abishek-pandiarajan</a>
+          <a href="tel:+601291114464"><i class="bi bi-telephone-fill"></i> +60 129114464 (MY)</a>
+          <a href="tel:+917397694464"><i class="bi bi-telephone-fill"></i> +91 73976 94464 (IN)</a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="exp-badge"><i class="bi bi-briefcase-fill"></i> 16+ Years Experience</div>
+      <div class="exp-badge"><i class="bi bi-layers-fill"></i> Embedded · Enterprise · AI</div>
+      <div class="exp-badge"><i class="bi bi-geo-alt-fill"></i> Malaysia / India</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="container">
+    <p class="section-label" data-aos="fade-up">About</p>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Professional Summary</h2>
+    <div class="divider" data-aos="fade-up" data-aos-delay="80"></div>
+    <p class="summary-text" data-aos="fade-up" data-aos-delay="120">
+      Lead Software Engineer with <strong>16+ years of experience</strong> spanning Embedded Systems, Enterprise Applications, AI-driven platforms, and cloud-based web applications — including <strong>11 years of hands-on development</strong> and <strong>5 years in Solution Lead and technical leadership roles</strong>. Progressed from firmware and device-level development to architecting scalable cloud-connected and full-stack enterprise systems.
+    </p>
+    <p class="summary-text mt-3" data-aos="fade-up" data-aos-delay="160">
+      Experienced in developing distributed applications using <strong>.NET, REST APIs, CI/CD pipelines</strong>, and modern web technologies. Strong background in hardware integration, embedded systems, communication protocols, and enterprise software architecture. Recently focused on <strong>AI-powered solutions</strong> including LLM-based assistants, RAG architectures, semantic search, and vector databases (Milvus).
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label" data-aos="fade-up">Expertise</p>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Core Skills</h2>
+    <div class="divider" data-aos="fade-up" data-aos-delay="80"></div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-robot"></i> AI & Data Systems</div>
+          <span class="skill-pill">LLM</span> <span class="skill-pill">RAG</span> <span class="skill-pill">Milvus</span> <span class="skill-pill">Semantic Search</span> <span class="skill-pill">Vector Databases</span> <span class="skill-pill">AI Chatbots</span> <span class="skill-pill">GitHub Copilot</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-globe2"></i> Enterprise & Web</div>
+          <span class="skill-pill">.NET / Core</span> <span class="skill-pill">ASP.NET</span> <span class="skill-pill">REST APIs</span> <span class="skill-pill">SaaS Platforms</span> <span class="skill-pill">Banking Systems</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-cpu-fill"></i> Embedded & Hardware</div>
+          <span class="skill-pill">Firmware Dev</span> <span class="skill-pill">Wi-Fi Module</span> <span class="skill-pill">RFID / Bluetooth</span> <span class="skill-pill">Multi-threading</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-phone-fill"></i> Mobile & Desktop</div>
+          <span class="skill-pill">Android SDK</span> <span class="skill-pill">iOS</span> <span class="skill-pill">WPF / WinForms</span> <span class="skill-pill">MFC</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-terminal-fill"></i> Languages</div>
+          <span class="skill-pill">C / C++</span> <span class="skill-pill">C#</span> <span class="skill-pill">VB.NET</span> <span class="skill-pill">Python</span> <span class="skill-pill">PHP</span> <span class="skill-pill">JavaScript</span> <span class="skill-pill">TypeScript</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="bi bi-diagram-3-fill"></i> Protocols & DevOps</div>
+          <span class="skill-pill">TCP/IP · UDP · SNMP</span> <span class="skill-pill">UART · SPI · I2C</span> <span class="skill-pill">Git / GitHub Actions</span> <span class="skill-pill">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="section-label" data-aos="fade-up">Career</p>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Professional Experience</h2>
+    <div class="divider" data-aos="fade-up" data-aos-delay="80"></div>
+    <div class="timeline" data-aos="fade-up" data-aos-delay="120">
+      <div class="timeline-item">
+        <div class="timeline-company">Estrrado Technology Solutions Pvt. Ltd., India</div>
+        <div class="timeline-role">Chief Technical Officer</div>
+        <div class="timeline-period"><i class="bi bi-calendar3 me-1"></i>Oct 2025 – Present</div>
+        <ul class="timeline-bullets">
+          <li>Designing the technical architecture for a cloud-based Education ERP platform, covering system design, module planning, and technology stack decisions.</li>
+          <li>Working on Azure cloud environment including infrastructure setup, deployment, and cloud services integration.</li>
+          <li>Used GitHub Copilot / Visual Studio Copilot for AI-assisted development.</li>
+          <li>Implemented CI/CD pipelines using GitHub Actions.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-company">Emerico Sdn Bhd., Malaysia</div>
+        <div class="timeline-role">Solution Lead</div>
+        <div class="timeline-period"><i class="bi bi-calendar3 me-1"></i>Dec 2021 – Sep 2025</div>
+        <ul class="timeline-bullets">
+          <li>Led architecture discussions and enterprise application design for scalable SaaS and banking systems.</li>
+          <li>Developed AI-powered chatbot solutions using LLMs, RAG architectures, semantic search, and Milvus vector database.</li>
+          <li>Worked on VTM systems, EPF payment terminals, and enterprise banking applications.</li>
+          <li>Oversaw Agile teams including developers, testers, and UI engineers.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-company">Emerico Sdn Bhd., Malaysia</div>
+        <div class="timeline-role">Senior Software Engineer</div>
+        <div class="timeline-period"><i class="bi bi-calendar3 me-1"></i>May 2021 – Dec 2021</div>
+        <ul class="timeline-bullets">
+          <li>Developed enterprise web and desktop applications using .NET technologies.</li>
+          <li>Maintained iOS and Android banking applications.</li>
+          <li>Developed and integrated REST APIs for enterprise applications.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-company">Toshiba TEC Singapore Pte. Ltd., Singapore</div>
+        <div class="timeline-role">Software Engineer</div>
+        <div class="timeline-period"><i class="bi bi-calendar3 me-1"></i>May 2010 – Apr 2021</div>
+        <ul class="timeline-bullets">
+          <li>Developed firmware solutions for thermal printers and embedded devices on Cortex ARM platforms.</li>
+          <li>Integrated Wi-Fi modules and implemented TCP/IP, UDP, and SNMP stacks.</li>
+          <li>Built Windows printer drivers, Android SDKs, and configuration/utility tools for production systems.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-company">Netaxis IT Solutions, Chennai, India</div>
+        <div class="timeline-role">Web Developer</div>
+        <div class="timeline-period"><i class="bi bi-calendar3 me-1"></i>Jan 2009 – Apr 2010</div>
+        <ul class="timeline-bullets">
+          <li>Developed and maintained PHP-based web applications and backend systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label" data-aos="fade-up">Portfolio</p>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Project Experience</h2>
+    <div class="divider" data-aos="fade-up" data-aos-delay="80"></div>
+
+    <!-- EMERICO -->
+    <div class="category-header" data-aos="fade-up"><i class="bi bi-robot"></i> Emerico — AI & Enterprise Solutions</div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-chat-dots-fill"></i></div>
+          <div class="project-title">S Series Chatbot</div>
+          <p class="project-desc">Customer service chatbot using LLM and RAG with public websites and documents as knowledge sources.</p>
+          <div class="project-tags"><span class="project-tag">LangGraph</span> <span class="project-tag">LangChain</span> <span class="project-tag">Python</span> <span class="project-tag">RAG</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-ui-checks-grid"></i></div>
+          <div class="project-title">AI Form Builder</div>
+          <p class="project-desc">AI assistant that generates visually interactive forms for surveys from a simple user prompt, with a dashboard to consolidate responses. Powered by Google Gemini as the LLM.</p>
+          <div class="project-tags"><span class="project-tag">Google Gemini</span> <span class="project-tag">FastAPI</span> <span class="project-tag">Python</span> <span class="project-tag">ASP.NET Core</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-shop"></i></div>
+          <div class="project-title">SaaS Retail Platform</div>
+          <p class="project-desc">Shopify-like platform with mobile apps and dashboard. Architected all app functionality and technical design; led a team of 10 members through full SDLC.</p>
+          <div class="project-tags"><span class="project-tag">.NET Core</span> <span class="project-tag">Microservices</span> <span class="project-tag">SQL Server</span> <span class="project-tag">Stripe</span> <span class="project-tag">RabbitMQ</span> <span class="project-tag">FCM</span> <span class="project-tag">APNS</span> <span class="project-tag">Mobile</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-bank2"></i></div>
+          <div class="project-title">VTM Banking Application (X-Series)</div>
+          <p class="project-desc">Maintained VTM application integrating cash recycler, fingerprint scanner, keypad, camera, cheque reader/printer in a unified workflow.</p>
+          <div class="project-tags"><span class="project-tag">Visual Studio</span> <span class="project-tag">C#</span> <span class="project-tag">Hardware Integration</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-credit-card-2-front"></i></div>
+          <div class="project-title">Payment Terminal Agent Banking</div>
+          <p class="project-desc">Maintained and improved the Android-based agent banking payment terminal application.</p>
+          <div class="project-tags"><span class="project-tag">Android Studio</span> <span class="project-tag">Java</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-tablet-landscape"></i></div>
+          <div class="project-title">iOS Application with iPad Jacket Hardware</div>
+          <p class="project-desc">Maintained the iOS application and added features for the Bank Islam iPad jacket hardware integration.</p>
+          <div class="project-tags"><span class="project-tag">XCode</span> <span class="project-tag">Swift</span> <span class="project-tag">iOS</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <div class="project-title">Matomo & Mautic Analytics</div>
+          <p class="project-desc">Worked with Matomo Analytics for website insights and Mautic for targeted email marketing campaigns.</p>
+          <div class="project-tags"><span class="project-tag">Matomo</span> <span class="project-tag">Mautic</span> <span class="project-tag">Analytics</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOSHIBA TEC -->
+    <div class="category-header" data-aos="fade-up"><i class="bi bi-cpu-fill"></i> Toshiba TEC — Embedded & Firmware</div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-printer-fill"></i></div>
+          <div class="project-title">Thermal Printer Firmware</div>
+          <p class="project-desc">Integrated Wi-Fi module into existing system via USB host using UML State Charts in Rhapsody. Handled TCP, UDP, SNMP, HTTP data with Queue Management. Created HTTP server webpages with JavaScript and HTML.</p>
+          <div class="project-tags"><span class="project-tag">C/C++</span> <span class="project-tag">IAR Workbench</span> <span class="project-tag">Rhapsody</span> <span class="project-tag">TCP/UDP</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-display"></i></div>
+          <div class="project-title">Electronic Paper Display</div>
+          <p class="project-desc">Integrated E-ink display with TI MCU (TM4C123GH6PM) to receive bitmap images via UART. Supported Wi-Fi image updates from mobile devices using SPI and UART protocols.</p>
+          <div class="project-tags"><span class="project-tag">Code Composer Studio</span> <span class="project-tag">C</span> <span class="project-tag">UART/SPI</span> <span class="project-tag">Android Studio</span> <span class="project-tag">C#</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-wifi"></i></div>
+          <div class="project-title">Wi-Fi Module — RS232 Printer Integration</div>
+          <p class="project-desc">Integrated Wi-Fi module with thermal printer via UART RX/TX. Classified TCP/UDP data by ESC POS commands and routed to appropriate printer subsystems.</p>
+          <div class="project-tags"><span class="project-tag">UART</span> <span class="project-tag">TCP/UDP</span> <span class="project-tag">ESC/POS</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-terminal-fill"></i></div>
+          <div class="project-title">CBASIC / BASIC Applications in RTOS</div>
+          <p class="project-desc">Created and maintained test scripts for ESC POS commands to test POS printers in 4690 OS terminal environments.</p>
+          <div class="project-tags"><span class="project-tag">BASIC</span> <span class="project-tag">4690 OS</span> <span class="project-tag">POS</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-arrow-up-circle-fill"></i></div>
+          <div class="project-title">Firmware Update Utility</div>
+          <p class="project-desc">Maintained a firmware update utility integrated into "Store Integrator (SIGUI)" GSA POS application to flash printer firmware in a Client-Server environment.</p>
+          <div class="project-tags"><span class="project-tag">High C</span> <span class="project-tag">4690 OS</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-windows"></i></div>
+          <div class="project-title">Windows User Mode Driver</div>
+          <p class="project-desc">Maintained and built a GDI-based Windows user mode driver to support new features for thermal printers.</p>
+          <div class="project-tags"><span class="project-tag">WDK 7</span> <span class="project-tag">C</span> <span class="project-tag">GDI</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOSHIBA — Systems & Mobile -->
+    <div class="category-header" data-aos="fade-up"><i class="bi bi-layers-fill"></i> Toshiba TEC — Systems, SDKs & Mobile</div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-plug-fill"></i></div>
+          <div class="project-title">Maintenance API for Printers</div>
+          <p class="project-desc">Developed unmanaged DLL APIs in VC++ for RX/TX communication, tested via marshaled C# and VB.NET wrapper applications.</p>
+          <div class="project-tags"><span class="project-tag">VC++</span> <span class="project-tag">C#</span> <span class="project-tag">VB.NET</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-person-badge-fill"></i></div>
+          <div class="project-title">Kiosk Self-Ordering System</div>
+          <p class="project-desc">Developed an F&B self-ordering kiosk application using Intuiface (front-end) and a Windows Service to monitor and update order status.</p>
+          <div class="project-tags"><span class="project-tag">Intuiface</span> <span class="project-tag">JavaScript</span> <span class="project-tag">C# Windows Service</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-broadcast-pin"></i></div>
+          <div class="project-title">User Management with RFID</div>
+          <p class="project-desc">Kiosk application with RFID reader for guest management. Paired with an Android lucky-draw app that pulls attendance data from server via FTP.</p>
+          <div class="project-tags"><span class="project-tag">VB.NET WPF</span> <span class="project-tag">Android Java</span> <span class="project-tag">MySQL</span> <span class="project-tag">RFID</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-phone-fill"></i></div>
+          <div class="project-title">Android SDK for Printer</div>
+          <p class="project-desc">Created a UPOS-spec Android SDK library to communicate with printers and generate print jobs. Built TCP/UDP protocol layer in C with Java APIs via JNI.</p>
+          <div class="project-tags"><span class="project-tag">Java</span> <span class="project-tag">C (JNI)</span> <span class="project-tag">TCP/UDP</span> <span class="project-tag">Eclipse</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-receipt-cutoff"></i></div>
+          <div class="project-title">Electronic Receipt Application</div>
+          <p class="project-desc">Android app that scans QR codes on e-paper displays, decodes receipt data, and stores receipts to the cloud.</p>
+          <div class="project-tags"><span class="project-tag">Android Studio</span> <span class="project-tag">Java</span> <span class="project-tag">Cloud</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-qr-code-scan"></i></div>
+          <div class="project-title">Maintenance QR Code Scanner</div>
+          <p class="project-desc">Integrated ZXING library into Android app to read QR codes printed by thermal printers, generate diagnostic reports, and share with helpdesk.</p>
+          <div class="project-tags"><span class="project-tag">Android Studio</span> <span class="project-tag">Java</span> <span class="project-tag">ZXING</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-sliders"></i></div>
+          <div class="project-title">Printer Setting Tool (Android)</div>
+          <p class="project-desc">Android app allowing configuration of handheld mobile printer settings via Bluetooth and Wi-Fi connections.</p>
+          <div class="project-tags"><span class="project-tag">Android Studio</span> <span class="project-tag">Bluetooth</span> <span class="project-tag">Wi-Fi</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-tools"></i></div>
+          <div class="project-title">Production & Configuration Tools Suite</div>
+          <p class="project-desc">Full-SDLC utility suite including thermal head pin health graph visualization in VB.NET, LED simulation GUI preview, and firmware update tools. Protocols: RS232, USB, TCP/UDP, HTTP.</p>
+          <div class="project-tags"><span class="project-tag">VC++</span> <span class="project-tag">VB.NET</span> <span class="project-tag">C#</span> <span class="project-tag">RS232/USB</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-bag-fill"></i></div>
+          <div class="project-title">Retail Market Demo Application</div>
+          <p class="project-desc">Developed a POS terminal demo application for retail market showcasing.</p>
+          <div class="project-tags"><span class="project-tag">VB.NET WPF</span> <span class="project-tag">MySQL Server</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-check2-circle"></i></div>
+          <div class="project-title">Printer Test Utility — JavaPOS</div>
+          <p class="project-desc">Developed a test utility to validate JavaPOS API functionality for POS printers in a 4690 OS environment.</p>
+          <div class="project-tags"><span class="project-tag">Java</span> <span class="project-tag">JavaPOS</span> <span class="project-tag">4690 OS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOSHIBA — Web -->
+    <div class="category-header" data-aos="fade-up"><i class="bi bi-globe"></i> Toshiba TEC — Web Applications</div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-hdd-network-fill"></i></div>
+          <div class="project-title">REST API — Food Ordering & Queue System</div>
+          <p class="project-desc">Created RESTful APIs for a Kiosk-based food ordering system to manage orders and queuing. Used JSON objects for client-server communication with MVC pattern and MySQL for data management.</p>
+          <div class="project-tags"><span class="project-tag">Web API 2</span> <span class="project-tag">C# .NET</span> <span class="project-tag">ASP.NET MVC</span> <span class="project-tag">MySQL</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-bar-chart-fill"></i></div>
+          <div class="project-title">Employee Job Sheet</div>
+          <p class="project-desc">Web application to maintain employee job records with data visualization using ChartJS for reporting and analytics.</p>
+          <div class="project-tags"><span class="project-tag">ASP.NET Web Forms</span> <span class="project-tag">C#</span> <span class="project-tag">ChartJS</span> <span class="project-tag">Bootstrap</span> <span class="project-tag">MySQL</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-ticket-detailed-fill"></i></div>
+          <div class="project-title">Trac Ticket Report</div>
+          <p class="project-desc">Generated management reports from the distributed file system database created by Trac Ticket software, reporting ticket status and trends using ChartJS visualizations.</p>
+          <div class="project-tags"><span class="project-tag">C# .NET</span> <span class="project-tag">Bootstrap</span> <span class="project-tag">SQLite</span> <span class="project-tag">ChartJS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETAXIS -->
+    <div class="category-header" data-aos="fade-up"><i class="bi bi-globe2"></i> Netaxis — Web & Online Platforms</div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-controller"></i></div>
+          <div class="project-title">Online Games Portal (09games / 123peppy)</div>
+          <p class="project-desc">Built an online games portal allowing flash game uploads, player challenges, and social networking sharing.</p>
+          <div class="project-tags"><span class="project-tag">PHP</span> <span class="project-tag">MySQL</span> <span class="project-tag">jQuery</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-icon"><i class="bi bi-globe2"></i></div>
+          <div class="project-title">Abishekonline.com — Personal Blog</div>
+          <p class="project-desc">Manages own domain and hosting. Created a personal blog using WordPress CMS and publishes content to social networking platforms.</p>
+          <div class="project-tags"><span class="project-tag">WordPress</span> <span class="project-tag">CMS</span> <span class="project-tag">Web Hosting</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <p class="section-label" data-aos="fade-up">Background</p>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Education & Certifications</h2>
+    <div class="divider" data-aos="fade-up" data-aos-delay="80"></div>
+    <div class="row g-3">
+      <div class="col-md-6"><div class="edu-card"><div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div><div><div class="edu-deg">B.E. Computer Science</div><div class="edu-inst">National Engineering College, Anna University, India · 2004–2008</div></div></div></div>
+      <div class="col-md-6"><div class="edu-card"><div class="edu-icon"><i class="bi bi-patch-check-fill"></i></div><div><div class="edu-deg">Sun Certified Java Programmer</div><div class="edu-inst">Sun Microsystems · 2009 </div></div></div></div>
+      <div class="col-md-6"><div class="edu-card"><div class="edu-icon"><i class="bi bi-trophy-fill"></i></div><div><div class="edu-deg">ECO Concept Tools Award</div><div class="edu-inst">Toshiba TEC Singapore · Excellence in Innovation </div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="nda-banner">
+  <div class="container d-flex align-items-center gap-3">
+    <i class="bi bi-shield-lock-fill nda-icon"></i>
+    <p class="mb-0"><strong>Non-Disclosure Agreement:</strong> Due to NDA obligations with clients and employers, I am unable to share further technical details, source code, screenshots, or proprietary information related to the projects listed above. The descriptions provided represent only what is permissible to disclose publicly.</p>
+  </div>
+</div>
+
+<footer>
+  <p><strong style="color:#fff">Abishek Pandiarajan</strong> &nbsp;·&nbsp; <a href="mailto:abishek.pandiarajan@gmail.com">abishek.pandiarajan@gmail.com</a></p>
+  <p class="mt-2" style="font-size:.78rem; color:#475569">Lead Software Engineer · 16+ Years · Malaysia / India </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init({ duration: 650, easing: 'ease-out-quad', once: true, offset: 60 });</script>
+</body>
+</html>
